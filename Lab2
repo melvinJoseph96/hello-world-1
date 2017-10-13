@@ -1,0 +1,89 @@
+
+public class Rational {
+	
+	private int numerator;
+	private int denominator;
+	
+	public Rational(){
+	numerator = 0;
+	denominator = 0;
+	}
+	
+	public Rational(int num, int den){
+		numerator = num;
+		denominator = den;
+		
+	}
+	
+	public int gcd(int a, int b){
+		if (b == 0)
+		return a;
+		else
+			return gcd(b, a % b);
+	}
+	
+	public Rational add(Rational a){
+		int newNum;
+		int newDen;
+		Rational toReturn;
+	
+		newNum = (numerator * a.denominator)+(denominator * a.numerator);
+		newDen = denominator * a.denominator;
+		int c = gcd(newNum, newDen);
+		toReturn = new Rational(newNum/c, newDen/c);
+		
+		return toReturn;
+	}
+	
+	public Rational sub(Rational a){
+		int newNum;
+		int newDen;
+		Rational toReturn;
+	
+		newNum = (numerator * a.denominator)-(denominator * a.numerator);
+		newDen = denominator * a.denominator;
+		int c = gcd(newNum, newDen);
+		toReturn = new Rational(newNum/c, newDen/c);
+		
+		return toReturn;	
+	}
+	
+	public Rational mul(Rational a){
+		int newNum;
+		int newDen;
+		Rational toReturn;
+	
+		newNum = numerator *  a.numerator;
+		newDen = denominator * a.denominator;
+		int c = gcd(newNum, newDen);
+		toReturn = new Rational(newNum/c, newDen/c);
+		
+		return toReturn;
+	}
+	
+	
+	
+	public Rational div(Rational a){
+		int newNum;
+		int newDen;
+		Rational toReturn;
+	
+		newNum = numerator *  a.denominator;
+		newDen = denominator * a.numerator;
+		int c = gcd(newNum, newDen);
+		toReturn = new Rational(newNum/c, newDen/c);
+		
+		return toReturn;	
+	}
+	
+	
+	
+	//TESTING 
+	public static void main(String []args){
+		Rational a = new Rational(2, 4);
+		Rational b = new Rational(1, 3);
+		System.out.println(a.add(b).numerator);
+		
+	}
+
+}
