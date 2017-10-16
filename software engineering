@@ -1,0 +1,41 @@
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.1'
+}
+
+// EXERCISE A 
+task hw << {
+	println "Hello World !"
+}
+
+// EXERCISE B
+task Task1 {
+	doLast { println "I'm task number 1" }
+}
+task Task2 {
+		dependsOn Task1
+	doLast { println "I'm task number 2"
+		}
+	}
+task Task3 {
+		dependsOn Task1
+	doLast {println "I'm task number 3"}
+		}
+task Task4 {
+		dependsOn Task3
+	doLast {println "I'm task number 4"}
+		}
+task Task5 {
+	dependsOn Task3
+	doLast {println "I'm task number 5"}
+		}
+task Task6 {
+	dependsOn Task2
+	dependsOn Task4
+	dependsOn Task5
+	doLast{println "I'm task number 6"}
+	}
+// EXERCISE C
+/*task copyFiles(type: copy){
+	from 'src/main/resources/source/'
+	into 'src/main/resources/target/'
+}*/
